@@ -18,7 +18,7 @@ describe('Funcionalidade Enderecos- Futuramento e Entrega', () => {
         cy.get('.woocommerce-message').should('contain', 'alterado com sucesso')
     });
         
-    it.only('Deve fazer cadastro de faturamento com sucesso- Usando arquivo de dados', () => {
+    it('Deve fazer cadastro de faturamento com sucesso- Usando arquivo de dados', () => {
 
         EnderecoPage.editarEnderecoFaturamento(
             DadosEndereco[0].nome,
