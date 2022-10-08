@@ -1,7 +1,9 @@
 /// <reference types= 'cypress'/>
 
 
-import { faker } from "@faker-js/faker";
+//import { faker } from "@faker-js/faker";
+
+let faker = require ('faker')
 
 describe('Funcionallidade Pagina de produtos', () => {
    
@@ -40,14 +42,14 @@ var quantidade= 2
 
         });
 
-        it('Deve adicionar produtos no carrinho--Usando Comando Customizados', () => {
+       /* it('Deve adicionar produtos no carrinho--Usando Comando Customizados', () => {
             cy.addProdutos ('Eos V-Neck Hoodie', 'M', 'Orange',1)
             
         });
         it('Deve adicionar produtos no carrinho--Usando Comando Customizados', () => {
             cy.addProdutos ('Eos V-Neck Hoodie', 'S', 'Blue',2)
             
-        });
+        }); */
 
         
        

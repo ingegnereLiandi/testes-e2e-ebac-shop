@@ -51,10 +51,10 @@ describe('Funcionallidade pre-cadastro', () => {
 
     });
 
-    it.only('Deve completar o pre-cadastro com sucesso- Usando Comandos Customizado', () => {
+   /* it('Deve completar o pre-cadastro com sucesso- Usando Comandos Customizado', () => {
         let emailFaker2= faker.internet.email() 
         cy.preCadastro (emailFaker2, 'senha!@forte','Douglas', 'Liandi')
         cy.get('.woocommerce-message').should('contain', 'sucesso')
         
-    });
+    });*/
 });
