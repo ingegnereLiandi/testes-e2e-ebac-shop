@@ -14,11 +14,12 @@ context('Exercicio - Testes End-to-end - Fluxo de pedido', () => {
     });
 
     beforeEach(() => {
-        cy.screenshot()
+        //cy.screenshot()
     });
 
     it('Deve fazer um pedido na loja Ebac Shop de ponta a ponta', () => {
         //TODO 
+        cy.get('#primary-menu > .menu-item-629 > a').click()
     });
 
 

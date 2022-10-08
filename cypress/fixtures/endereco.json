@@ -1,0 +1,54 @@
+[
+    {
+        "nome": "Catarina",
+        "sobrenome": "Liandi",
+        "empresa": "LiandiTech",
+        "pais": "Brasil",
+        "endereco": "Via Pagno",
+        "numero": "4",
+        "cidade": "Barueri",
+        "estado": "Sao Paulo",
+        "cep": "06268-200",
+        "telefone": "83.94942-2153",
+        "email": "catarinaliandi@outlook.it"
+    },
+    {
+        "nome": "Tiago",
+        "sobrenome": "Liandi",
+        "empresa": "LiandiTech",
+        "pais": "Brasil",
+        "endereco": "Via Cumiana",
+        "numero": "8",
+        "cidade": "Barueri",
+        "estado": "Minas Gerais",
+        "cep": "06268-200",
+        "telefone": "83.94942-7777",
+        "email": "tiagoliandi@outlook.it"
+    },
+    {
+        "nome": "Douglas",
+        "sobrenome": "Liandi",
+        "empresa": "LiandiTech",
+        "pais": "Brasil",
+        "endereco": "Via Pagno",
+        "numero": "4",
+        "cidade": "Barueri",
+        "estado": "Ceara",
+        "cep": "06268-200",
+        "telefone": "83.94942-2153",
+        "email": "douglasliandi@outlook.it"
+    },
+    {
+        "nome": "Fernanda",
+        "sobrenome": "Liandi",
+        "empresa": "LiandiTech",
+        "pais": "Brasil",
+        "endereco": "Via Pagno",
+        "numero": "4",
+        "cidade": "Barueri",
+        "estado": "Ceara",
+        "cep": "06268-200",
+        "telefone": "83.94942-5555",
+        "email": "fernandaliandi@outlook.it"
+    }
+]
