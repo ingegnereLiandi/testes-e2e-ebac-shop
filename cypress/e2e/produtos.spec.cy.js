@@ -1,59 +1,41 @@
-/// <reference types= 'cypress'/>
+///<reference types= 'cypress'/>
 
+describe('Funcionalidade pagina de produtos', () => {
 
-//import { faker } from "@faker-js/faker";
-
-let faker = require ('faker')
-
-describe('Funcionallidade Pagina de produtos', () => {
-   
     beforeEach(() => {
-        cy.visit ('produtos')
+        cy.visit('produtos/')
+    });
+
+    it('Deve selecionar um produto', () => {
+
+        cy.get('[class="product-block grid"]')
+            //.first()
+            //.last()
+            .eq(3)
+            .contains('Ajax Full-Zip Sweatshirt').click()
 
     });
 
-    afterEach(() => {
-        //cy.screenshot()
+    it('Deve adicionar um item ao carrinho', () => {
+
+        var quantidade= 9
+
+        cy.get('[class="product-block grid"]')
+        .contains('Ajax Full-Zip Sweatshirt').click()
+        cy.get('.button-variable-item-M').click()
+        cy.get('.button-variable-item-Green').click()
+        cy.get('.input-text').clear().type(quantidade)
+        cy.get('.single_add_to_cart_button').click()
+        cy.get('.woocommerce-message').should('contain' ,  quantidade )
+
+
+
     });
 
-
-    it('Deve selecionar um produto da lista', () => {
-        cy.get(':nth-child(4) > .page-numbers').click()
-        cy.get('.post-4003 > .product-block > .caption > .meta > .infor')
-        //.first()
-        //.last()
-        //.eq(7)
-        .contains('Eos V-Neck Hoodie')
-        .click()    
-
-    })
-
-        it('Deve adicionar um produto ao carrinho', () => {
-var quantidade= 2
-            
-            cy.get(':nth-child(4) > .page-numbers').click()
-            cy.get('.post-4003 > .product-block > .caption > .meta > .infor').contains('Eos V-Neck Hoodie')
-            cy.get('.post-4003 > .product-block > .block-inner > .image > .product-image > .image-hover').click()
-            cy.get('.button-variable-item-M').click()
-            cy.get('.button-variable-item-Orange').click()
-            cy.get('.input-text').click().clear().type(quantidade)
-            cy.get('.single_add_to_cart_button').click()
-            cy.get('.dropdown-toggle > .mini-cart-items').should('contain', quantidade)
-
-        });
-
-       /* it('Deve adicionar produtos no carrinho--Usando Comando Customizados', () => {
-            cy.addProdutos ('Eos V-Neck Hoodie', 'M', 'Orange',1)
-            
-        });
-        it('Deve adicionar produtos no carrinho--Usando Comando Customizados', () => {
-            cy.addProdutos ('Eos V-Neck Hoodie', 'S', 'Blue',2)
-            
-        }); */
-
+    it('Deve adicionar produtos ao carrinho- usando comando customizado', () => {
+        cy.addProduto('Ajax Full-Zip Sweatshirt', 'M' , 'Green', 3)
+        cy.get('.woocommerce-message').should('contain' ,  '“Ajax Full-Zip Sweatshirt” foram adicionados no seu carrinho.')
         
-       
+    });
 
-  
- 
 });

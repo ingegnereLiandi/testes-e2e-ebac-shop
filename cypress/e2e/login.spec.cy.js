@@ -1,38 +1,74 @@
-/// <reference types="cypress" />
-let dadosLogin
 
-context('Funcionalidade Login', () => {
-    before(() => {
-        cy.fixture('perfil').then(perfil => {
-            dadosLogin = perfil
-        })
-    });
+/// <reference types= 'cypress'/>
+
+const perfil =require('../fixtures/perfil.json')
+
+context('Funcionalidade login', () => {
+
 
     beforeEach(() => {
-        cy.visit('minha-conta')
+        cy.visit ('minha-conta')
+
     });
 
-    afterEach(() => {
-       // cy.screenshot()
-    });
+        afterEach(() => {
 
-    it('Login com sucesso usando Comando customizado', () => {
-        cy.login(dadosLogin.usuario, dadosLogin.senha)
-        cy.get('.page-title').should('contain', 'Minha conta')
-    });
-
-    it('Login usando fixture', () => {
-        cy.fixture('perfil').then((dados) => {
-            cy.login(dados.usuario, dados.senha)
-        })
-        cy.get('.page-title').should('contain', 'Minha conta')
-    });
-
-    it('Deve fazer login com sucesso - sem otimização', () => {
-        cy.get('#username').type(dadosLogin.usuario)
-        cy.get('#password').type(dadosLogin.senha, { log: false })
-        cy.get('.woocommerce-form > .button').click()
-        cy.get('.page-title').should('contain', 'Minha conta')
+            //cy.screenshot()
+            
        
+        
+    });
+
+    it('deve fazer login com sucesso', () => {
+        
+        cy.get('#username').type ('aluno_teste@teste.com')
+        cy.get('#password').type ('teste@teste.com')
+        cy.get('.woocommerce-form > .button').click()
+        cy.get('.page-title').should('contain','Minha conta')
+        
+    });
+
+
+
+    it('Deve fazer login com sucusso -- usando aquivo de dados', () => {
+
+        cy.get('#username').type (perfil.usuario)
+        cy.get('#password').type (perfil.senha)
+        cy.get('.woocommerce-form > .button').click()
+        cy.get('.page-title').should('contain','Minha conta')
+        
+    });
+
+    it('Deve fazer login com sucesso -- usando fixtures', () => {
+        cy.fixture ('perfil').then(dados => {
+
+        cy.get('#username').type (dados.usuario , {log:false})
+        cy.get('#password').type (dados.senha,{log:false} )
+        cy.get('.woocommerce-form > .button').click()
+        cy.get('.page-title').should('contain','Minha conta')
+        })
+
+
+        
+    });
+    
+    it('Deve exibir mensagem de senha ou usuario invalidos' , () => {
+      
+        cy.get('#username').type ('aluno.teste@teste.com')
+        cy.get('#password').type ('teste-teste.com')
+        cy.get('.woocommerce-form > .button').click()
+        cy.get('.woocommerce-error > li').should('contain','Verifique novamente')
+        
+    })
+
+    it('Deve exibir mensagem de senha  invalida' , () => {
+       
+        cy.get('#username').type ('aluno_teste@teste.com')
+        cy.get('#password').type ('teste-teste.com')
+        cy.get('.woocommerce-form > .button').click()
+        cy.get('.woocommerce-error').should('contain','Erro')
+        
     })
 })
+
+

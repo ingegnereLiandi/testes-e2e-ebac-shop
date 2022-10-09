@@ -1,39 +1,43 @@
-/// <reference types= 'cypress'/>
+///<reference types = 'cypress' />
 
-import EnderecoPage from '../support/page-objects/endereco-page'
+import EnderecoPage from '../support/page_objects/endereco-page'
+const dadosEndereco = require ('../fixtures/endereco.json')
 
-import DadosEndereco from '../fixtures/endereco.json'
 
-describe('Funcionalidade Enderecos- Futuramento e Entrega', () => {
+describe('Funcionalidade Enderecos - Faturamento e Entrega', () => {
 
-    beforeEach(() => {
-        cy.visit('minha-conta')
-        
-        cy.fixture('perfil').then (dados =>
-        cy.login(dados.usuario, dados.senha))
-    });
+beforeEach(() => {
+    cy.visit('minha-conta')
+    cy.fixture('perfil').then(dados =>{
+    cy.login(dados.usuario, dados.senha)
+
+    })
+   
+});
 
     it('Deve fazer cadastro de faturamento com sucesso', () => {
-
-        EnderecoPage.editarEnderecoFaturamento('Douglas', 'Liandi', 'LiandiTech','Brasil', 'Av. Sao Joao', '2001', 'Sao Paulo', '06268-050', '11.94942-2153', 'douglasliandi@outlook.it')
-        cy.get('.woocommerce-message').should('contain', 'alterado com sucesso')
-    });
+ EnderecoPage.editarEnderecoFaturamento('Roberto', 'Viana', 'Google', 'Brasil' ,'Av Paulista', '866', 'Sao Paulo', 'Sao Paulo','06268-200','11- 3482-2153', 'robertoviana@uol.com')
+ cy.get('.woocommerce-message').should('contain', 'Endereço alterado com sucesso.')
         
-    it('Deve fazer cadastro de faturamento com sucesso- Usando arquivo de dados', () => {
+    });
 
+    it('Deve fazer cadastro de faturamento com sucesso -usando arquivo de dados', () => {
         EnderecoPage.editarEnderecoFaturamento(
-            DadosEndereco[0].nome,
-            DadosEndereco[0].sobrenome,
-            DadosEndereco[0].empresa,
-            DadosEndereco[0].pais,
-            DadosEndereco[0].endereco,
-            DadosEndereco[0].numero,
-            DadosEndereco[0].cidade,
-            DadosEndereco[0].estado,
-            DadosEndereco[0].cep,
-            DadosEndereco[0].telefone,
-            DadosEndereco[0].email)
-        cy.get('.woocommerce-message').should('contain', 'alterado com sucesso')
-    });
-        
-    });
+            
+            dadosEndereco[0].nome,
+            dadosEndereco[0].sobrenome,
+            dadosEndereco[0].empresa,
+            dadosEndereco[0].pais,
+            dadosEndereco[0].endereco,
+            dadosEndereco[0].numero,
+            dadosEndereco[0].cidade,
+            dadosEndereco[0].estado,
+            dadosEndereco[0].cep,
+            dadosEndereco[0].telefone,
+            dadosEndereco[0].email,
+
+            )
+        cy.get('.woocommerce-message').should('contain', 'Endereço alterado com sucesso.')
+               
+           });
+});
