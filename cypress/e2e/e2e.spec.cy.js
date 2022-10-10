@@ -1,7 +1,7 @@
 ///<reference types ="cypress"/>
 
 const perfil = require('../fixtures/perfil.json')
-import CompraProdutoPage from '../support/page_objects/compra-produto'
+
 
 
 
@@ -14,7 +14,7 @@ context('Exercicio - Testes End-to-end - Fluxo de pedido', () => {
     });
 
     beforeEach(() => {
-        cy.screenshot()
+        //cy.screenshot()
     });
 
     afterEach(() => {
@@ -39,16 +39,13 @@ context('Exercicio - Testes End-to-end - Fluxo de pedido', () => {
             cy.get('#password').type(dados.senha, { log: false })
             cy.get('.woocommerce-form > .button').click()
 
-            cy.get('#primary-menu > .menu-item-629 > a').click()   //modelo de compra 1
-            cy.addProduto1('Ajax Full-Zip Sweatshirt', 'M', 'Green', 1)
-            cy.get('.tbay-woocommerce-breadcrumb > :nth-child(5) > a').click()
-           
-            CompraProdutoPage.incluirCompra2()
-            cy.get('.tbay-woocommerce-breadcrumb > :nth-child(5) > a').click()
-            CompraProdutoPage.incluirCompra3()
-            cy.get('.tbay-woocommerce-breadcrumb > :nth-child(5) > a').click()
-            CompraProdutoPage.incluirCompra4()
+            cy.get('#primary-menu > .menu-item-629 > a').click()  
 
+            cy.addProduto1('Ajax Full-Zip Sweatshirt', 'M', 'Green', 1) 
+            cy.addProduto2('Mach Street Sweatshirt', 'M', 'Red', 1)
+            cy.addProduto3( 'Oslo Trek Hoodie', 'M', 'Brown', 1)
+            cy.addProduto4( 'Marco Lightweight Active Hoodie', 'M', 'Green',1)
+           
             cy.get('.woocommerce-message > .button').click()
             cy.get('.checkout-button').click()
             cy.get('#payment_method_cheque').click()
@@ -57,7 +54,7 @@ context('Exercicio - Testes End-to-end - Fluxo de pedido', () => {
 
             cy.get('.woocommerce-notice').should('contain', 'Obrigado. Seu pedido foi recebido.')
 
-
+           
         });
     });
 });
